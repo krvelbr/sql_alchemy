@@ -1,10 +1,12 @@
-from models import Pessoas
+from models import Pessoas, Usuarios
 
 
 def insere_pessoas():
-    pessoa = Pessoas(nome='Claudinei', idade=42)
-    print(pessoa)
-    pessoa.save()
+    pessoa1 = Pessoas(nome='Claudinei', idade=42)
+    pessoa2 = Pessoas(nome='Polyana', idade=32)
+    print(pessoa1, pessoa2)
+    pessoa1.save()
+    pessoa2.save()
 
 
 def consulta_tudo():
@@ -35,11 +37,21 @@ def exclui_pessoa():
 #    finally:
 #        consulta_tudo()
 
+def insere_usuario(login, senha):
+    usuario = Usuarios(login=login, senha=senha)
+    usuario.save()
+
+def consulta_todos_usuarios():
+    usuarios = Usuarios.query.all()
+    print(usuarios)
 
 if __name__ == '__main__':
-    # insere_pessoas()
-    consulta_tudo()
+    insere_usuario('teste1', 'senha')
+    insere_usuario('claudinei', '123')
+    consulta_todos_usuarios()
+    #insere_pessoas()
+    #consulta_tudo()
     # consulta_unica()
     # altera_pessoa()
-    exclui_pessoa()
-    consulta_tudo()
+    #exclui_pessoa()
+    #consulta_tudo()
